@@ -21,11 +21,12 @@ do
         echo "$ipsrc" > data/ipsrc.csv
         echo "$ipdst" > data/ipdst.csv
             
-        state=$(awk '{print $0;}' result.txt)
+        
     fi
     # echo "State is $state"
     python3 computeTuples.py
     python3 inspector.py
+    state=$(awk '{print $0;}' result.txt)
 
     if [ $state -eq 1 ];
     then

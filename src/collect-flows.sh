@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in {1..500}
+for i in {1..5000000}
 do
     start=`date +%s.%N`
     # extract essential data from raw data

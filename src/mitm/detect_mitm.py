@@ -9,9 +9,9 @@ class Mitm(object):
 
     def start(self):
         # trich xuat ip_dst
-        with open('/home/tiendat35/nckh/data/ipdst.csv', 'r') as ip1:
+        with open('//home/$USER/nckh/src/mitm/data/ipdst.csv', 'r') as ip1:
             file_ip_src = ip1.readlines()
-        with open('/home/tiendat35/nckh/data/macdst.csv', 'r') as mac1:
+        with open('//home/$USER/nckh/src/mitm/data/macdst.csv', 'r') as mac1:
             file_mac_src = mac1.readlines()
         i = 0
         while(i < len(file_ip_src)):
@@ -20,22 +20,22 @@ class Mitm(object):
 
     def detect_mitm(self):
         flag = 0
-        with open('/home/tiendat35/nckh/data/ipdst.csv', 'r') as ip1:
+        with open('//home/$USER/nckh/src/mitm/data/ipdst.csv', 'r') as ip1:
             file_ip_src = ip1.readlines()
-        with open('/home/tiendat35/nckh/data/macdst.csv', 'r') as mac1:
+        with open('//home/$USER/nckh/src/mitm/data/macdst.csv', 'r') as mac1:
             file_mac_src = mac1.readlines()
         i = 0
         #so sanh xem bo ip co gi khac khong
         while(i < len(file_ip_src)):
             if (self.ip_mac[file_ip_src[i]] != file_mac_src[i]):
-                with open('/home/tiendat35/nckh/Mitm_result.txt', 'w') as f:
+                with open('//home/$USER/nckh/src/mitm/resultMitM.txt', 'w') as f:
                     f.write("1")
                 flag = 1
                 break
                 # print("detect attack!")
                 i += 1
             else:
-                with open('/home/tiendat35/nckh/Mitm_result.txt', 'w') as f:
+                with open('//home/$USER/nckh/src/mitm/resultMitM.txt', 'w') as f:
                     f.write("0")
                 # print("normal")
                 flag = 0

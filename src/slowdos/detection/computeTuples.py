@@ -56,7 +56,7 @@ headers = ["ave_packets", "ave_bytes", "flows_per_ip", "std_idle_age", "new_flow
 label = 0
 features = [ave_packets, ave_bytes, flows_per_ip, std_idle_age, new_flows_per_time_interval]
 
-# standard_data = preprocessing.scale(features)
+standard_data = preprocessing.scale(features)
 # data = standard_data.
 
 # print(dict(zip(headers, features)))
@@ -66,12 +66,12 @@ features = [ave_packets, ave_bytes, flows_per_ip, std_idle_age, new_flows_per_ti
 # print(features)
 
 # Uncomment when running 
-# with open('realtime.csv', 'w') as f:
-#     cursor = csv.writer(f, delimiter=" ")
-#     cursor.writerow(headers)
-#     cursor.writerow(standard_data)
+with open('realtime.csv', 'w') as f:
+    cursor = csv.writer(f, delimiter=",")
+    # cursor.writerow(headers)
+    cursor.writerow(standard_data)
     
-#     f.close()
+    f.close()
 
 
 # Create dataset-normal
@@ -84,9 +84,9 @@ features = [ave_packets, ave_bytes, flows_per_ip, std_idle_age, new_flows_per_ti
 
 
 # Create dataset-attack
-with open('data/dataset-attack.csv', 'a') as f:
-    cursor = csv.writer(f, delimiter=",")
-    # cursor.writerow(headers)
-    cursor.writerow(features)
+# with open('data/dataset-attack.csv', 'a') as f:
+#     cursor = csv.writer(f, delimiter=",")
+#     # cursor.writerow(headers)
+#     cursor.writerow(features)
     
-    f.close()
+#     f.close()

@@ -53,13 +53,13 @@ do
 
     if [ $state -eq 1 ];
     then
-        echo 1 > /home/$USER/nckh/slow_result.txt
+        echo 1 > /home/$USER/nckh/src/resultSlow.txt
         #
         # default_flow=$(sudo ovs-ofctl dump-flows s$j | tail -n 1)    # Get flow "action:CONTROLLER:<port_num>" sending unknown packet to the controller
         # sudo ovs-ofctl del-flows s$j
         # sudo ovs-ofctl add-flow s$j "$default_flow"
     else
-        echo 0 > /home/$USER/nckh/slow_result.txt
+        echo 0 > /home/$USER/nckh/src/resultSlow.txt
     fi
 
     sleep 1    # Because idle_timeout la 10s

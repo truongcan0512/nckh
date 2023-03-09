@@ -9,8 +9,13 @@ import warnings
 
 filename = 'classifier.sav'
 classifier = joblib.load(filename)
-dt_realtime = pd.read_csv('realtime.csv')
-result = classifier.predict(dt_realtime)
+dt_realtime = np.genfromtxt('realtime.csv', delimiter=",")
+
+X = np.array(dt_realtime)
+X = X.reshape(1,-1)
+
+
+result = classifier.predict(X)
 
 with open('result.txt', 'w') as f:
     f.write(str(result[0]))

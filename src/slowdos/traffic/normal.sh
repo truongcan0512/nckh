@@ -2,7 +2,7 @@
 
 for i in {1..200000}
 do
-    end_host=$((RANDOM%16+2))
+    end_host=$((RANDOM%16+3))
     python3 traffic.py -s 1 -e $end_host
 
     # socket=$((RANDOM%10+5))

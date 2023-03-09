@@ -1,5 +1,7 @@
 import numpy as np
 import csv
+from sklearn import preprocessing
+
 
 # Standard deviation of packets (SDFP)
 # i.e., number of packets in the T period.
@@ -59,13 +61,14 @@ rfip = abs(float(n_ip - row_count_nonint) / n_ip)
 headers = ["SSIP", "SDFP", "SDFB", "SFE", "RFIP"]
 
 features = [ssip, sdfp, sdfb, sfe, rfip]
+standard_data = preprocessing.scale(features)
 
 # print(dict(zip(headers, features)))
 # print(features)
 
 with open('realtime.csv', 'w') as f:
     cursor = csv.writer(f, delimiter=",")
-    cursor.writerow(headers)
-    cursor.writerow(features)
+    # cursor.writerow(headers)
+    cursor.writerow(standard_data)
     
     f.close()

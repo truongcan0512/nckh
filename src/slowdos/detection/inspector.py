@@ -8,9 +8,15 @@ import joblib, warn
 
 filename = 'classifier.sav'
 classifier = joblib.load(filename)
-dt_realtime = pd.read_csv('realtime.csv',delim_whitespace=True)
-# print(dt_realtime)
-result = classifier.predict(dt_realtime)
+# dt_realtime = pd.read_csv('realtime.csv',delimiter=",")
+dt_realtime = np.genfromtxt('realtime.csv', delimiter=",")
+X = np.array(dt_realtime)
+X = X.reshape(1,-1)
+
+
+# print(X)
+result = classifier.predict(X)
+# print(result)
 
 with open('.result', 'w') as f:
     f.write(str(result[0]))

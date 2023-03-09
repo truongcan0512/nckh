@@ -4,16 +4,17 @@
 for i in {1..200000}
 do
     sudo ovs-ofctl dump-flows s2 > isEmpty.txt
-    if [ ! -s "${sEmpty.txt}" ]; then
+    if [ `cat isEmpty.txt | wc -l` -eq 1 ]; then
         stateEntropy=0
         stateSVM=0
         stateMitm=0
         stateSlow=0
+        echo "Normal state"
     else
         stateEntropy=$(awk '{print $0;}' /home/$USER/nckh/src/resultEntropy.txt)
         stateSVM=$(awk '{print $0;}' /home/$USER/nckh/src/resultSVM.txt)
-        stateMitm=$(awk '{print $0;}' /home/$USER/nckh/src/Mitm_result.txt)
-        stateSlow=$(awk '{print $0;}' /home/$USER/nckh/src/slow_result.txt)
+        stateMitm=$(awk '{print $0;}' /home/$USER/nckh/src/resultMitM.txt)
+        stateSlow=$(awk '{print $0;}' /home/$USER/nckh/src/resultSlow.txt)
         
 
         if [ $stateEntropy -eq 1 ];
@@ -31,7 +32,8 @@ do
             if [ $stateMitm -eq 1 ];
             then    
                 echo "Happening MitM attack"
-            elif [ $stateSlow -eq 1 ]
+            elif [ $stateSlow -eq 1 ];
+            then
                 echo "Happening Slow attack"
             else
                 echo "Normal state"
